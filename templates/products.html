@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - EliteShop</title>
+    <link rel="stylesheet" href="/static/css/products.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <nav class="navbar">
+        <div class="nav-container">
+          <!-- Logo -->
+          <div class="nav-logo">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C13.1 2 14 2.9 14 4V6H16L18 8V22H6V8L8 6H10V4C10 2.9 10.9 2 12 2Z" fill="currentColor" />
+              <path d="M8 8V10H16V8L14 6H10L8 8Z" fill="#ffffff" />
+              <rect x="9" y="12" width="6" height="2" rx="1" fill="#ffffff" />
+              <rect x="9" y="16" width="6" height="2" rx="1" fill="#ffffff" />
+              <circle cx="12" cy="4" r="1.5" fill="#ffffff" />
+            </svg>
+            <span class="logo-text">EliteShop</span>
+          </div>
+
+          <!-- Navigation Menu -->
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="/" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'products' %}" class="nav-link active">Products</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Header Actions -->
+          <div class="nav-actions">
+            <!-- Search Icon -->
+            <button class="action-btn search-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 21L16.514 16.506M19 10.5C19 15.194 15.194 19 10.5 19S2 15.194 2 10.5 5.806 2 10.5 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            <!-- User Account -->
+            <button class="action-btn user-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            <!-- Shopping Cart -->
+            <button class="action-btn cart-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.4 5.1 16.4H17M17 13V16.4M9 19.5C9.8 19.5 10.5 20.2 10.5 21S9.8 22.5 9 22.5 7.5 21.8 7.5 21 8.2 19.5 9 19.5ZM20 19.5C20.8 19.5 21.5 20.2 21.5 21S20.8 22.5 20 22.5 18.5 21.8 18.5 21 19.2 19.5 20 19.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span class="cart-count">0</span>
+            </button>
+          </div>
+
+          <!-- Mobile Menu Toggle -->
+          <button class="mobile-menu-toggle">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Products Page Content -->
+    <main class="products-main">
+      <!-- Page Header -->
+      <section class="products-header">
+        <div class="products-header-container">
+          <h1 class="products-title">Our Premium Collection</h1>
+          <p class="products-subtitle">Discover the finest quality outfits crafted for your lifestyle</p>
+        </div>
+      </section>
+
+      <!-- Products Content -->
+      <section class="products-content">
+        <div class="products-container">
+          <!-- Mobile Filter Toggle -->
+          <button class="mobile-filter-toggle" onclick="toggleMobileFilters()">
+            <svg width="20" height="20" style="margin-right: 8px;" viewBox="0 0 24 24" fill="none">
+              <path d="M3 6H21M3 12H21M9 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>Filters & Sort
+          </button>
+
+          <!-- Sidebar Filters -->
+          <aside class="products-sidebar" id="mobile-sidebar">
+            <div class="filter-header">
+              <h3>Filters</h3>
+              <button class="clear-filters-btn" onclick="clearAllFilters()">Clear All</button>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="filter-group">
+              <h4 class="filter-title">Category</h4>
+              <div class="filter-options">
+                <label class="filter-option">
+                  <input type="checkbox" value="dresses" class="filter-checkbox" data-filter="category" />
+                  <span class="checkmark"></span>
+                  Dresses
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" value="shirts" class="filter-checkbox" data-filter="category" />
+                  <span class="checkmark"></span>
+                  Shirts
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" value="pants" class="filter-checkbox" data-filter="category" />
+                  <span class="checkmark"></span>
+                  Pants
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" value="jackets" class="filter-checkbox" data-filter="category" />
+                  <span class="checkmark"></span>
+                  Jackets
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" value="accessories" class="filter-checkbox" data-filter="category" />
+                  <span class="checkmark"></span>
+                  Accessories
+                </label>
+              </div>
+            </div>
+
+            <!-- Price Filter -->
+            <div class="filter-group">
+              <h4 class="filter-title">Price Range</h4>
+              <div class="price-range">
+                <input type="range" id="minPrice" min="0" max="500" value="0" class="price-slider" />
+                <input type="range" id="maxPrice" min="0" max="500" value="500" class="price-slider" />
+                <div class="price-display">
+                  <span>$<span id="minPriceValue">0</span> - $<span id="maxPriceValue">500</span></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Size Filter -->
+            <div class="filter-group">
+              <h4 class="filter-title">Size</h4>
+              <div class="filter-options">
+                <label class="filter-option">
+                  <input type="checkbox" value="xs" class="filter-checkbox" data-filter="size" />
+                  <span class="checkmark"></span>
+                  XS
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" value="s" class="filter-checkbox" data-filter="size" />
+                  <span class="checkmark"></span>
+                  S
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" value="m" class="filter-checkbox" data-filter="size" />
+                  <span class="checkmark"></span>
+                  M
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" value="l" class="filter-checkbox" data-filter="size" />
+                  <span class="checkmark"></span>
+                  L
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" value="xl" class="filter-checkbox" data-filter="size" />
+                  <span class="checkmark"></span>
+                  XL
+                </label>
+              </div>
+            </div>
+
+            <!-- Color Filter -->
+            <div class="filter-group">
+              <h4 class="filter-title">Color</h4>
+              <div class="color-options">
+                <label class="color-option" style="background-color: #ef4444" data-color="red"><input type="checkbox" value="red" class="filter-checkbox" data-filter="color" /></label>
+                <label class="color-option" style="background-color: #10b981" data-color="green"><input type="checkbox" value="green" class="filter-checkbox" data-filter="color" /></label>
+                <label class="color-option" style="background-color: #000000" data-color="black"><input type="checkbox" value="black" class="filter-checkbox" data-filter="color" /></label>
+                <label class="color-option" style="background-color: #ffffff; border: 1px solid #ddd" data-color="white"><input type="checkbox" value="white" class="filter-checkbox" data-filter="color" /></label>
+                <label class="color-option" style="background-color: #2563eb" data-color="blue"><input type="checkbox" value="blue" class="filter-checkbox" data-filter="color" /></label>
+                <label class="color-option" style="background-color: #8b5cf6" data-color="purple"><input type="checkbox" value="purple" class="filter-checkbox" data-filter="color" /></label>
+              </div>
+            </div>
+
+            <!-- Brand Filter -->
+            <div class="filter-group">
+              <h4 class="filter-title">Brand</h4>
+              <div class="filter-options">
+                <label class="filter-option">
+                  <input type="checkbox" value="eliteshop" class="filter-checkbox" data-filter="brand" />
+                  <span class="checkmark"></span>
+                  EliteShop
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" value="premium" class="filter-checkbox" data-filter="brand" />
+                  <span class="checkmark"></span>
+                  Premium
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" value="luxury" class="filter-checkbox" data-filter="brand" />
+                  <span class="checkmark"></span>
+                  Luxury
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" value="designer" class="filter-checkbox" data-filter="brand" />
+                  <span class="checkmark"></span>
+                  Designer
+                </label>
+              </div>
+            </div>
+          </aside>
+
+          <div class="products-main-content">
+            <div class="products-toolbar">
+              <div class="products-count">
+                <span id="results-count">8 Products</span>
+              </div>
+              <div class="products-sort">
+                <select id="sort-select" class="sort-dropdown">
+                  <option value="featured">Featured</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="name">Name: A to Z</option>
+                  <option value="newest">Newest First</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="products-grid" id="products-grid">
+              <div class="product-card" data-category="dresses" data-price="299" data-size="s,m,l" data-color="blue" data-brand="eliteshop">
+                <div class="product-image">
+                  <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=500&fit=crop&crop=center" alt="Elegant Blue Dress" class="product-img" />
+                  <span class="product-badge">New</span>
+                  <div class="product-overlay">
+                    <button class="product-overlay-btn">Quick View</button>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <div class="product-content">
+                    <h3 class="product-name">Elegant Blue Dress</h3>
+                    <p class="product-brand">EliteShop</p>
+                    <div class="product-price">
+                      <span class="current-price">$299</span>
+                      <span class="original-price">$399</span>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <button class="product-btn add-to-cart-btn">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="product-card" data-category="shirts" data-price="129" data-size="m,l,xl" data-color="white" data-brand="premium">
+                <div class="product-image">
+                  <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=500&fit=crop&crop=center" alt="Premium White Shirt" class="product-img" />
+                  <div class="product-overlay">
+                    <button class="product-overlay-btn">Quick View</button>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <div class="product-content">
+                    <h3 class="product-name">Premium White Shirt</h3>
+                    <p class="product-brand">Premium</p>
+                    <div class="product-price">
+                      <span class="current-price">$129</span>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <button class="product-btn add-to-cart-btn">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="product-card" data-category="pants" data-price="189" data-size="s,m,l,xl" data-color="black" data-brand="luxury">
+                <div class="product-image">
+                  <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=500&fit=crop&crop=center" alt="Luxury Black Pants" class="product-img" />
+                  <span class="product-badge sale">Sale</span>
+                  <div class="product-overlay">
+                    <button class="product-overlay-btn">Quick View</button>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <div class="product-content">
+                    <h3 class="product-name">Luxury Black Pants</h3>
+                    <p class="product-brand">Luxury</p>
+                    <div class="product-price">
+                      <span class="current-price">$189</span>
+                      <span class="original-price">$249</span>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <button class="product-btn add-to-cart-btn">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="product-card" data-category="jackets" data-price="399" data-size="m,l" data-color="red" data-brand="eliteshop">
+                <div class="product-image">
+                  <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=500&fit=crop&crop=center" alt="Stylish Red Jacket" class="product-img" />
+                  <div class="product-overlay">
+                    <button class="product-overlay-btn">Quick View</button>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <div class="product-content">
+                    <h3 class="product-name">Stylish Red Jacket</h3>
+                    <p class="product-brand">EliteShop</p>
+                    <div class="product-price">
+                      <span class="current-price">$399</span>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <button class="product-btn add-to-cart-btn">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="product-card" data-category="shirts" data-price="89" data-size="s,m,l,xl" data-color="green" data-brand="designer">
+                <div class="product-image">
+                  <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=500&fit=crop&crop=center" alt="Designer Green Shirt" class="product-img" />
+                  <div class="product-overlay">
+                    <button class="product-overlay-btn">Quick View</button>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <div class="product-content">
+                    <h3 class="product-name">Designer Green Shirt</h3>
+                    <p class="product-brand">Designer</p>
+                    <div class="product-price">
+                      <span class="current-price">$89</span>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <button class="product-btn add-to-cart-btn">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="product-card" data-category="dresses" data-price="249" data-size="xs,s,m" data-color="purple" data-brand="luxury">
+                <div class="product-image">
+                  <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=500&fit=crop&crop=center" alt="Purple Evening Dress" class="product-img" />
+                  <span class="product-badge">New</span>
+                  <div class="product-overlay">
+                    <button class="product-overlay-btn">Quick View</button>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <div class="product-content">
+                    <h3 class="product-name">Purple Evening Dress</h3>
+                    <p class="product-brand">Luxury</p>
+                    <div class="product-price">
+                      <span class="current-price">$249</span>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <button class="product-btn add-to-cart-btn">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="product-card" data-category="accessories" data-price="59" data-size="one-size" data-color="black" data-brand="premium">
+                <div class="product-image">
+                  <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=500&fit=crop&crop=center" alt="Premium Black Belt" class="product-img" />
+                  <div class="product-overlay">
+                    <button class="product-overlay-btn">Quick View</button>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <div class="product-content">
+                    <h3 class="product-name">Premium Black Belt</h3>
+                    <p class="product-brand">Premium</p>
+                    <div class="product-price">
+                      <span class="current-price">$59</span>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <button class="product-btn add-to-cart-btn">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="product-card" data-category="pants" data-price="159" data-size="m,l,xl" data-color="blue" data-brand="designer">
+                <div class="product-image">
+                  <img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=500&fit=crop&crop=center" alt="Designer Blue Jeans" class="product-img" />
+                  <span class="product-badge sale">Sale</span>
+                  <div class="product-overlay">
+                    <button class="product-overlay-btn">Quick View</button>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <div class="product-content">
+                    <h3 class="product-name">Designer Blue Jeans</h3>
+                    <p class="product-brand">Designer</p>
+                    <div class="product-price">
+                      <span class="current-price">$159</span>
+                      <span class="original-price">$199</span>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <button class="product-btn add-to-cart-btn">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="no-results" id="no-results" style="display: none">
+              <div class="no-results-content">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 21L16.514 16.506M19 10.5C19 15.194 15.194 19 10.5 19S2 15.194 2 10.5 5.806 2 10.5 2 19 5.806 19 10.5Z" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <h3>No products found</h3>
+                <p>Try adjusting your filters to find what you're looking for.</p>
+                <button class="btn btn-primary" onclick="clearAllFilters()">Clear Filters</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/js/products.js"></script>
+  </body>
+</html>

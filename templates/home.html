@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}EliteShop - Outfit Online Store{% endblock %}
+    </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <nav class="navbar">
+        <div class="nav-container">
+          <!-- Logo -->
+          <div class="nav-logo">
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2Z"
+                fill="currentColor"
+              />
+              <path
+                d="M21 9H18.5L14.7 7.6C14.3 7.4 13.8 7.6 13.6 8L12 11L10.4 8C10.2 7.6 9.7 7.4 9.3 7.6L5.5 9H3C2.4 9 2 9.4 2 10S2.4 11 3 11H4.8L6.2 10.4L9.5 11.8C9.8 11.9 10.2 11.9 10.5 11.8L12 11.2L13.5 11.8C13.8 11.9 14.2 11.9 14.5 11.8L17.8 10.4L19.2 11H21C21.6 11 22 10.6 22 10S21.6 9 21 9Z"
+                fill="currentColor"
+              />
+              <path
+                d="M6 13V20C6 21.1 6.9 22 8 22H16C17.1 22 18 21.1 18 20V13L15 14.5V19H9V14.5L6 13Z"
+                fill="currentColor"
+              />
+            </svg>
+            <span class="logo-text">EliteShop</span>
+          </div>
+
+          <!-- Navigation Menu -->
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="#" class="nav-link active">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="products" class="nav-link">Products</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Header Actions -->
+          <div class="nav-actions">
+            <!-- Search Icon -->
+            <button class="action-btn search-btn">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21 21L16.514 16.506M19 10.5C19 15.194 15.194 19 10.5 19S2 15.194 2 10.5 5.806 2 10.5 2 19 5.806 19 10.5Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+
+            <!-- User Account -->
+            <button class="action-btn user-btn">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <circle
+                  cx="12"
+                  cy="7"
+                  r="4"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+
+            <!-- Shopping Cart -->
+            <button class="action-btn cart-btn">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.4 5.1 16.4H17M17 13V16.4M9 19.5C9.8 19.5 10.5 20.2 10.5 21S9.8 22.5 9 22.5 7.5 21.8 7.5 21 8.2 19.5 9 19.5ZM20 19.5C20.8 19.5 21.5 20.2 21.5 21S20.8 22.5 20 22.5 18.5 21.8 18.5 21 19.2 19.5 20 19.5Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span class="cart-count">0</span>
+            </button>
+          </div>
+
+          <!-- Mobile Menu Toggle -->
+          <button class="mobile-menu-toggle">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="hero-title">
+              Discover Premium
+              <span class="title-highlight">Quality Products</span>
+            </h1>
+            <p class="hero-description">
+              Shop the latest Outfit collection of premium products with
+              unmatched Quality and Style.
+            </p>
+            <div class="hero-buttons">
+              <a href="#featured" class="btn btn-primary">Shop Now</a>
+              <a href="products" class="btn btn-secondary">View Collection</a>
+            </div>
+            
+          </div>
+          <div class="hero-image">
+            <div class="image-container">
+              <img
+                src="{% static 'images/hero-product.png' %}"
+                alt="Premium Products"
+                class="hero-img"
+              />
+              <div class="image-overlay">
+                <div class="floating-card">
+                  <div class="card-content">
+                    <span class="discount-badge">30% OFF</span>
+                    <span class="offer-text">Limited Time Offer</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Background Elements -->
+      <div class="hero-bg-elements">
+        <div class="bg-circle bg-circle-1"></div>
+        <div class="bg-circle bg-circle-2"></div>
+        <div class="bg-grid"></div>
+      </div>
+    </section>
+
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
